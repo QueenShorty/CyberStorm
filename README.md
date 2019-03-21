@@ -3,7 +3,7 @@ Here is where all our code for assignments and challenges will be posted
 
 # Git Setup
 
-1. Download git bash[here](https://git-scm.com/download/win)
+1. Install git bash [here](https://git-scm.com/download/win)
 2. Copy this [link](https://github.com/QueenShorty/CyberStorm.git)
 3. Open git bash - It should open once finished installing 
 4. Nagivate to desired locaiton using git bash
@@ -14,25 +14,25 @@ Here is where all our code for assignments and challenges will be posted
 
 ## Git Commands
 
-#### git pull
+### git pull
 Pulls all the updated code and including new branches 
-#### git push
+### git push
 To push all your new changes
-#### git status
+### git status
 Allows you to see which files have changes, need to be commited
-#### git add .
+### git add .
 Adds all files with changes to stagging - make sure to check the status so your not commiting files you don't need to
-#### git commit -m "message"
+### git commit -m "message"
 Permanently stores your changes from staging to the repository
-#### git checkout "branch name"
+### git checkout "branch name"
 Allows you to checkout a branch to work in
-#### git branch "new_branch_name"
+### git branch "new_branch_name"
 Commands creates a new branch. Make sure to be in master before running this command
-#### git branch 
+### git branch 
 Tells you which branc your on
-#### git merge "branch_name"
+### git merge "branch_name"
 Merges branch_name into current branch. always merge master branch into current branch before pusing to new branch to master
-#### git push --set-upstream "name" master
+### git push --set-upstream "name" master
 When you create a new branch you need to push to origin
 
 ## Branch Structure
