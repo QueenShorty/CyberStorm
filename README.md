@@ -3,7 +3,7 @@ Here is where all our code for assignments and challenges will be posted
 
 # Git Setup
 
-1. Install git bash [here](https://git-scm.com/download/win)
+1. Get git bash [here](https://git-scm.com/download/win)
 2. Copy this [link](https://github.com/QueenShorty/CyberStorm.git)
 3. Open git bash - It should open once finished installing 
 4. Nagivate to desired locaiton using git bash
