@@ -9,7 +9,7 @@ Here is where all our code for assignments and challenges will be posted
 4. Nagivate to desired locaiton using git bash
     a. Use command cd "file name"
     b. If unsure where you are you can use dir command
-5. Run command: git clone https://github.com/QueenShortyCyberStorm.git
+5. Run command: git clone https://github.com/QueenShorty/CyberStorm.git
 6. This command pulls the most updated code down into the file you selected, naming it CyberStorm. 
 
 ## Git Commands
