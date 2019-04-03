@@ -4,6 +4,8 @@ import os
 
 from ftplib import FTP
 
+DEBUG = False
+
 ftp = FTP('www.jeangourd.com')
 
 ftp.login()
@@ -37,7 +39,8 @@ for a in y: #Goes through each line
 
     w3 = w3 + z #Now append the 10 binary numbers to the final string
 
-print w3
+if (DEBUG):
+	print w3
 
     #print '{0:010b}'.format(int(oct(stat.S_IMODE(os.lstat(f).st_mode)), 8))
 
