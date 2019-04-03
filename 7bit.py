@@ -1,6 +1,7 @@
 import stat
 import os
 from ftplib import FTP
+DEBUG = 0
 ftp = FTP('www.jeangourd.com')
 ftp.login()
 ftp.cwd('7') #Goes to the 7 file
@@ -21,7 +22,8 @@ for i in x: #Goes through each line
     w = w[3:10]
     
     w2 = w2 + w #Now append the 10 binary numbers to the final string
-print w2
+if (DEBUG)
+    print w2
     #print '{0:010b}'.format(int(oct(stat.S_IMODE(os.lstat(f).st_mode)), 8))
 
 def decode(user_input):
