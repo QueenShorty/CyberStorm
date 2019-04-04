@@ -12,11 +12,11 @@ ftp.login()#logs in to the server anonymously
 def decode(user_input):
 
     answer= ""
-    break_up = [(user_input[i*7:i*7+7]) for i in range(len(user_input)//7)]
+    break_up = [(user_input[i*7:i*7+7]) for i in range(len(user_input)//7)]#makes sure to break the binary string into groups of 7
 
     for i in range(len(break_up)):
-        s = int(break_up[i], 2)
-        answer += chr(s)
+        s = int(break_up[i], 2) #makes sure python understands the 1's and 0's are base 2
+        answer += chr(s) #takes the binary values and outputs the ASCII value from the 7-bit table
 
     print(answer)
 
@@ -39,7 +39,7 @@ if(BIT== 7):
             if k == "1": #If there is noise then reset w to an empty string
                 w = ""
 
-        w = w[3:10]
+        w = w[3:10] #makes sure to only decode the right 7 bits on the 7 directory
     
         w2 = w2 + w #Now append the 10 binary numbers to the final string
 
