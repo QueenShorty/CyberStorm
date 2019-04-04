@@ -1,10 +1,26 @@
-import stat
-import os
+'''
+The Athenians
+CSC 442/CYEN 301
+April 5, 2019
+'''
 from ftplib import FTP
-DEBUG = False
-BIT = 10 #Number of permission bits
+BIT = 7 #Change this variable from 10 to 7 to alternate between the two methods
 ftp = FTP('www.jeangourd.com')
-ftp.login()
+ftp.login()#logs in to the server anonymously
+
+
+def decode(user_input):
+
+    answer= ""
+    break_up = [(user_input[i*7:i*7+7]) for i in range(len(user_input)//7)]
+
+    for i in range(len(break_up)):
+        s = int(break_up[i], 2)
+        answer += chr(s)
+
+    print(answer)
+
+
 if(BIT== 7):
     ftp.cwd('7') #Goes to the 7 file
     
@@ -22,26 +38,10 @@ if(BIT== 7):
         for k in w[0:3]: #Checks if the first three binary numbers are a 1 (cuts out the noise)
             if k == "1": #If there is noise then reset w to an empty string
                 w = ""
+
         w = w[3:10]
     
         w2 = w2 + w #Now append the 10 binary numbers to the final string
-    if (DEBUG):
-        print w2
-    #print '{0:010b}'.format(int(oct(stat.S_IMODE(os.lstat(f).st_mode)), 8))
-
-    def decode(user_input):
-        n = 7
-    #while ((len(user_input)-1) % 10 != 0):
-        #user_input = user_input + "0"
-
-        answer= ""
-        break_up = [(user_input[i*n:i*n+n]) for i in range(len(user_input)//n)]
-
-        for i in range(len(break_up)):
-            s = int(break_up[i], 2)
-            answer += chr(s)
-
-        print(answer)
 
     decode(w2)
 
@@ -72,42 +72,7 @@ if (BIT == 10):
                 z = z + "1" #if there is anything else, then put a 1
 
 
-
-
-
         w3 = w3 + z #Now append the 10 binary numbers to the final string
 
-    if (DEBUG):
-    	    print w3
-
-    #print '{0:010b}'.format(int(oct(stat.S_IMODE(os.lstat(f).st_mode)), 8))
-
-
-
-    def decode(user_input):
-
-        n = 7
-
-    #while ((len(user_input)-1) % 10 != 0):
-
-        #user_input = user_input + "0"
-
-        answer= ""
-
-        break_up = [(user_input[i*n:i*n+n]) for i in range(len(user_input)//n)]
-
-
-
-        for i in range(len(break_up)):
-
-            s2 = int(break_up[i], 2)
-
-            answer += chr(s2)
-
-
-
-        print(answer)
-
-
-
     decode(w3)
+
