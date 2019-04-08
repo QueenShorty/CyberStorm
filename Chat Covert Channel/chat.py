@@ -10,13 +10,13 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ip = '138.47.102.208'
 port = 31337
 s.connect((ip, port))
-data = s.recv(8182)
+data = s.recv(4096)
 
 while (data.rstrip("\n") != "EOF"):
       
       sys.stdout.write(data)
       sys.stdout.flush()
-      data = s.recv(8182)
+      data = s.recv(4096)
 s.close()
 
 
