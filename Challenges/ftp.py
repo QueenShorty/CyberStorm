@@ -1,123 +1,106 @@
+import stat
 import os
-from ftplib
-import FTP
-
-METHOD = 0
-
-def sevenbit():
-    ftp = FTP('www.jeangourd.com')
-
-    ftp.login()
-
-    ftp.cwd('7')# Goes to the 7 file
-
-    x = []# Array that holds all the files and file permissions
-
-    w2 = ""#
-    #Holds the FINAL binary numbers to be tested in decoder
-
-    ftp.dir(x.append)# Appends the files and file permissions to x
-
+from ftplib import FTP
+DEBUG = False
+BIT = 10#Number of permission bitsi
+HOST = "138.47.148.167"
+PORT = 8008
+ftp = FTP()
+ftp.connect(HOST, PORT)
+ftp.login("spartans", "spartansSPARTANSspartans")
+ftp.cwd('.lookee-here/now-in-here')
+if(BIT== 7):
+    #ftp.cwd('7') #Goes to the 7 file
+    
+    x = [] #Array that holds all the files and file permissions
+    w2 = "" #Holds the FINAL binary numbers to be tested in decoderi
+    ftp.dir(x.append) #Appends the files and file permissions to x
     for i in x: #Goes through each line
+        s = i #Sets a string to each the line
+        w = "" #Will hold 10 binary numbers
+        for j in s[0:10]: #Loops through only file permission
+            if j == "-": #if there is a -, then put a 0
+                w = w + "0"
+            else:
+                w = w + "1" #if there is anything else, then put a 1
+        for k in w[0:3]: #Checks if the first three binary numbers are a 1 (cuts out the noise)
+            if k == "1": #If there is noise then reset w to an empty string
+                w = ""
+        w = w[3:10]
+    
+        w2 = w2 + w #Now append the 10 binary numbers to the final string
+    if (DEBUG):
+        print w2
+    #print '{0:010b}'.format(int(oct(stat.S_IMODE(os.lstat(f).st_mode)), 8))
 
-        s = i# Sets a string to each the line
+    def decode(user_input):
+        n = 7
+    #while ((len(user_input)-1) % 10 != 0):
+        #user_input = user_input + "0"
 
-        w = ""#
-        #Will hold 10 binary numbers
+        answer= ""
+        break_up = [(user_input[i*n:i*n+n]) for i in range(len(user_input)//n)]
 
-    for j in s[0: 10]: #Loops through only file permission
+        for i in range(len(break_up)):
+            s = int(break_up[i], 2)
+            answer += chr(s)
 
-        if j == "-": #if there is a - , then put a 0
+        print(answer)
 
-            w = w + "0"
+    decode(w2)
 
-        else :
 
-            w = w + "1"
-        #if there is anything
-        #else, then put a 1
 
-    for k in w[0: 3]: #Checks
-        #if the first three binary numbers are a 1(cuts out the noise)
+if (BIT == 10):
+    #ftp.cwd('10') #Goes to the 10 file
 
-        if k == "1": #If there is noise then reset w to an empty string
+    y = [] #Array that holds all the files and file permissions
 
-            w = ""
+    w3 = "" #Holds the FINAL binary numbers to be tested in decoder
 
-            w = w[3: 10]
-
-            w2 = w2 + w# Now append the 10 binary numbers to the final string
-
-    print w2
-
-# print '{0:010b}'.format(int(oct(stat.S_IMODE(os.lstat(f).st_mode)), 8))
-
-def decode(user_input):
-
-    n = 7
-
-    while ((len(user_input) - 1) % 10 != 0):
-
-    #user_input = user_input + "0"
-
-        answer = ""
-
-        break_up = [(user_input[i * n: i * n + n]) for i in range(len(user_input) //n)]
-
-            for i in range(len(break_up)):
-
-                s = int(break_up[i], 2)
-
-                answer += chr(s)
-
-                print(answer)
-
-def tenbit():
-    ftp = FTP('www.jeangourd.com')
-
-    ftp.login()
-
-    ftp.cwd('10')# Goes to the 10 file
-
-    y = []# Array that holds all the files and file permissions
-
-    w3 = ""
-    #Holds the FINAL binary numbers to be tested in decoder
-
-    ftp.dir(y.append)# Appends the files and file permissions to y
+    ftp.dir(y.append) #Appends the files and file permissions to y
 
     for a in y: #Goes through each line
 
-        s2 = a# Sets a string to each the line
+        s2 = a #Sets a string to each the line
 
-        z = ""
-        #Will hold 10 binary numbers
+        z = "" #Will hold 10 binary numbers
 
-    for e in s2[0: 10]: #Loops through only file permission
+        for e in s2[0:10]: #Loops through only file permission
 
-        if e == "-": #if there is a - , then put a 0 z = z + "0"
+            if e == "-": #if there is a -, then put a 0
+	        		z = z + "0"
 
-        else :
-            z = z + "1"
-            #if there is anything
-            #else, then put a 1
+            else:
 
-            w3 = w3 + z# Now append the 10 binary numbers to the final string
+                z = z + "1" #if there is anything else, then put a 1
 
-            print w3
 
-            # print '{0:010b}'.format(int(oct(stat.S_IMODE(os.lstat(f).st_mode)), 8))
 
-def decode(user_input):
 
-    n = 7
 
-            
-    while ((len(user_input) - 1) % 10 != 0):
+        w3 = w3 + z #Now append the 10 binary numbers to the final string
 
-                #user_input = user_input + "0"
+    if (DEBUG):
+    	    print w3
 
-        break_up = [(user_input[i * n: i * n + n]) for i in range(len(user_input) //n)]
+    #print '{0:010b}'.format(int(oct(stat.S_IMODE(os.lstat(f).st_mode)), 8))
+
+
+
+    def decode(user_input):
+
+        n = 7
+
+    #while ((len(user_input)-1) % 10 != 0):
+
+        #user_input = user_input + "0"
+
+        answer= ""
+
+        break_up = [(user_input[i*n:i*n+n]) for i in range(len(user_input)//n)]
+
+
 
         for i in range(len(break_up)):
 
@@ -125,13 +108,10 @@ def decode(user_input):
 
             answer += chr(s2)
 
-            print(answer)
 
-            decode(w3)
 
-def main():
-    if METHOD == 0:
-        sevenbit()
+        print(answer)
 
-    else :
-        tenbit()
+
+
+    decode(w3)
