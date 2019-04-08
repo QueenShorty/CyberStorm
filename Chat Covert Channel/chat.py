@@ -10,17 +10,19 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ip = '138.47.102.208'
 port = 31337
 s.connect((ip, port))
-data = s.recv(4096)
+data = s.recv(8182)
 
 while (data.rstrip("\n") != "EOF"):
+      
       sys.stdout.write(data)
       sys.stdout.flush()
+      data = s.recv(8182)
 s.close()
 
 
 covert_bin = ""
 t0 = time()
-data = s.recv(4096)
+#data = s.recv(4096)
 t1 = time()
 delta = round(t1 - t0, 3)
 if (delta >= ONE):
