@@ -1,5 +1,5 @@
 import socket
-from binascii import hexlify
+from binascii import unhexlify
 from time import time
 import sys
 
@@ -12,36 +12,33 @@ port = 31337
 s.connect((ip, port))
 data = s.recv(4096)
 
+covert_bin = ""
 while (data.rstrip("\n") != "EOF"):
-      
       sys.stdout.write(data)
       sys.stdout.flush()
+      t0 = time()
       data = s.recv(4096)
+      t1 = time()
+      delta = round(t1-t0, 3)
+      if(delta >= ONE):
+        covert_bin += "1"
+      else:
+        covert_bin += "0"
+
 s.close()
-
-
-covert_bin = ""
-t0 = time()
-#data = s.recv(4096)
-t1 = time()
-delta = round(t1 - t0, 3)
-if (delta >= ONE):
-      covert_bin += "1"
-
-else:
-      covert_bin += "0"
-
 covert = ""
 i = 0
 while (i < len(covert_bin)):
       #process one byte at a time
-      b = covert_bin[i:i + 8]
+    b = covert_bin[i:i + 8]
       #convert it to ASCII
-      n = int("0b{}".format(b), 2)
-      try:
+    n = int("0b{}".format(b), 2)
+    try:
         covert += unhexlify("{0:x}".format(n))
-      except TypeError:
+    except TypeError:
         covert += "?"
 
       #stop at the string "EOF"
-      i += 8
+    i += 8
+
+print(covert[0:-4])
