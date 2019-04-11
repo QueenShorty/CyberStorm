@@ -7,9 +7,10 @@ ZERO = 0.025
 ONE = 0.1
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-ip = '138.47.102.208'
-port = 31337
-s.connect((ip, port))
+#ip = '138.47.102.208'
+#port = 31337
+#s.connect((ip, port))
+s.connect(("localhost", 65432))
 data = s.recv(4096)
 
 covert_bin = ""

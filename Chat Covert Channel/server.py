@@ -1,12 +1,13 @@
 import socket
 from binascii import hexlify
+import time
 
 ZERO = 0.025
 ONE=1
 
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    port = 1337
+    port = 65432
     s.bind(("", port))
     s.listen(0)
 except:
@@ -16,9 +17,9 @@ except:
 c, addr = s.accept()
 
 
-msg = "Some message..."
+msg = "This message is going to be longer so that it can pass the covert message."
 covert = "secret" + "EOF"
-covert_bin = ""
+covert_bin = "010000010100001001000011"
 
 for i in covert:
     #convert each character to a full byte
