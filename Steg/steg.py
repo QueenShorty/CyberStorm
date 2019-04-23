@@ -16,16 +16,28 @@
 #-o<val> Set offset to <val>
 #-i<val> Set interval to <val>
 #-w<val> Set wrapper file to <val>
-#-h<val> Set hidden file to <val>
+#-h<val> Set hidden file to <val>
+
 
 
 from math import *
 import sys
+from PIL import Image
 
-method = sys.argv[1]
-data = sys.argv[2]
-offset = sys.argv[3]
-interval = sys.argv[4]
+
+#method = sys.argv[1]
+#data = sys.argv[2]
+#offset = sys.argv[3]
+#interval = sys.argv[4]
+wrapper = sys.argv[1]
+#hidden = sys.argv[6]
 
 #store from left to right : but for cyberstorm might be right to left
 
+img = Image.open(wrapper)
+rgb_img = img.convert('RGB')
+
+rgb_img.size
+
+print(rgb_img)
+                     
