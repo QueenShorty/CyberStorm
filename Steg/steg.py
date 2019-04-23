@@ -34,10 +34,12 @@ wrapper = sys.argv[1]
 
 #store from left to right : but for cyberstorm might be right to left
 
-img = Image.open(wrapper)
-rgb_img = img.convert('RGB')
+with open(wrapper, "rb") as image:
+  f = image.read()
+  b = bytearray(f)
+  #print b[1]
 
-rgb_img.size
-
-print(rgb_img)
+f = open('/empty.jpg', 'wb')
+f.write(bytearray(b))
+f.close()
                      
