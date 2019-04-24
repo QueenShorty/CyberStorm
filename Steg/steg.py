@@ -18,8 +18,6 @@
 #-w<val> Set wrapper file to <val>
 #-h<val> Set hidden file to <val>
 
-
-
 from math import *
 import sys
 from PIL import Image
@@ -29,11 +27,6 @@ from PIL import Image
 #with open(wrapper, "rb") as image:
   #f = image.read()
   #b = bytearray(f)
-  #print b[1]
-
-#f = open('/empty.jpg', 'wb')
-#f.write(bytearray(b))
-#f.close()
 
 def interval(): #Format that includes interval (do not need to include math for finding interval)
     offset = sys.argv[3]
