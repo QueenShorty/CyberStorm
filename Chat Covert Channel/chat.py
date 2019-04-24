@@ -4,7 +4,7 @@
 # April 24, 2019   #
 ####################
 
-#Github link:
+#Github link:https://github.com/QueenShorty/CyberStorm/blob/master/Chat%20Covert%20Channel/chat.py
 
 
 import socket
