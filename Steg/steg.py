@@ -35,7 +35,7 @@ from PIL import Image
 #f.write(bytearray(b))
 #f.close()
 
-def format2():
+def interval(): #Format that includes interval (do not need to include math for finding interval)
     offset = sys.argv[3]
     interval = sys.argv[4]
     wrapper = sys.argv[5]
@@ -53,35 +53,71 @@ def format2():
     if wrapper[:2] == "-w":
         print(wrapper[2:])
     else:
-        print("Need -w followed by a file name")  
+        print("Need -w followed by a file name") 
 
-def format():
+
+def nointerval(): #Format that excludes interval when it is not present (do need to include math for finding interval)
+    offset = sys.argv[3]
+    wrapper = sys.argv[4]
+
+    if offset[:2] == "-o":
+        print(offset[2:])
+    else:
+        print("Need -o followed by a number")
+
+    if wrapper[:2] == "-w":
+        print(wrapper[2:])
+    else:
+        print("Need -w followed by a file name")
+
+
+def format2(check, length): #This format checks if interval is included or not
+    if check == 0 and length == 7: #For -s with -i
+        hidden = sys.argv[6]
+        interval()
+        if hidden[:2] == "-h":
+            print(hidden[2:])
+    
+    if check == 0 and length == 6: #For -s without -i
+        hidden = sys.argv[5]
+        nointerval()
+        if hidden[:2] == "-h":
+            print(hidden[2:])
+
+    if check == 1 and length == 6: #For -r with -i
+        interval()
+
+    if check == 1 and length == 5: #For -r without -i
+        nointerval()
+
+            
+def format(): #This format checks if -s or -r
     data = sys.argv[2]
 
     if data == "-s":
         print("IN -s")
-        hidden = sys.argv[6]
-        format2()
-        
-        if hidden[:2] == "-h":
-            print(hidden[2:])        
+        format2(0, len(sys.argv)) #Passes 0 to indicate -s and the length of arguments       
 
     elif data == "-r":
         print("IN -r")
-        format2()
+        format2(1, len(sys.argv)) #Passes 1 to indicate -r and the length of arguments
 
     else:
         print("Need -s or -r")
 
-
+###################################################################################
+#This is where main begins
 method = sys.argv[1]
 
-if method == "-B":
+if method == "-B": #For Byte method
     print("IN -B")
     format()
 
-elif method == "-b":
+elif method == "-b": #For bit method
     print("IN -b")
     format()
 
+else:
+    print("Need -B or -b")
+####################################################################################
                      
