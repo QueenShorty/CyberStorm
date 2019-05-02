@@ -7,7 +7,7 @@
 
 import sys
 
-sentinel = [0000000, 1111111, 0000000, 0000000, 1111111, 0000000]
+sentinel = [0, 255, 0, 0, 255, 0]
 
 def retrievebit():
     o = get_offset()
@@ -21,24 +21,25 @@ def retrievebyte():
     h = []
 
     i = 0
+    counter = 0
     while(i < len(w)):
-        if(w[o] == "0000000"):
+        if(w[o] == 0):
             temp = o
             j = 0
             while(j <= len(sentinel)):
                 if(w[temp] == sentinel[j]):
                     temp += I
+                    j += 1
                     if(j == len(sentinel)):
                         return(h)
-                    j += 1
-                else:
-                    j = len(sentinel) + 2
+
+                if(w[temp] != sentinel[j]):
+                    j += len(sentinel) + 2
 
                 
-        else:
-            h[i] = w[o]
-            o += I
-            i += 1
+        h.append(w[o])
+        o += I
+        i += 1
     
 
 def storebyte():
@@ -65,7 +66,7 @@ def storebit():
     o = get_offset()
     I = get_interval()
     w = wrapper_hidden()
-    h = wrapper_hidden()
+    h = wrapper_hidden()        
 
 def get_offset():
     offset = 0
@@ -74,7 +75,7 @@ def get_offset():
         if (test[:2] == "-o"):
             offset = test[2:]
 
-    return(offset)
+    return(int(offset))
 
 def get_interval():
     interval = 1
@@ -83,7 +84,7 @@ def get_interval():
         if (test[:2] == "-i"):
             interval = test[2:]
 
-    return(interval)
+    return(int(interval))
 
 def wrapper_hidden():
     flag = False
@@ -105,17 +106,24 @@ def byte_maker(file_here):
         f = image.read()
         b = bytearray(f)
     return b
+
+def decode(bytes):
+    print("".join(map(chr, bytes)))
     
 #Main
 
 if((sys.argv[1] == "-b") and (sys.argv[2] == "-s")):
-    storebit()
+    output = storebit()
+    decode(output)
 elif((sys.argv[1] == "-B") and (sys.argv[2] == "-s")):
-    storebyte()
+    output = storebyte()
+    decode(output)
 elif((sys.argv[1] == "-b") and (sys.argv[2] == "-r")):
-    retrievebit()
+    output = retrievebit()
+    decode(output)
 elif((sys.argv[1] == "-B") and (sys.argv[2] == "-r")):
-    retrievebyte()
+    output = retrievebyte()
+    decode(output)
 else:
     print("Error")
 
