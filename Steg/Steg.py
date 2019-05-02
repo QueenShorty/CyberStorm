@@ -13,6 +13,34 @@ def retrievebit():
     o = get_offset()
     I = get_interval()
     w = wrapper_hidden()
+    h = []
+
+    i = 0
+    while(i < len(w)):
+        temp = 0
+        for k in range(8):
+            w[o] &= 1
+            temp |= (w[o] << (7 - k))
+            o += I
+        if(temp == sentinel[0]):
+            j = 0
+            offset = o
+            while(j <= len(sentinel)):
+                temp2 = 0
+                for l in range(8):
+                    w[offset] &= 1
+                    temp2 |= (w[offset] << (7 - l))
+                    offset += I
+                if(temp2 == sentinel[j+1]):
+                    j += 1
+                    if(j == len(sentinel)-1):
+                        return(h)
+                else:
+                    j += len(sentinel) + 2
+                
+        h.append(temp)
+        i += 1
+        
 
 def retrievebyte():
     o = get_offset()
@@ -21,9 +49,8 @@ def retrievebyte():
     h = []
 
     i = 0
-    counter = 0
     while(i < len(w)):
-        if(w[o] == 0):
+        if(w[o] == sentinel[0]):
             temp = o
             j = 0
             while(j <= len(sentinel)):
@@ -66,7 +93,20 @@ def storebit():
     o = get_offset()
     I = get_interval()
     w = wrapper_hidden()
-    h = wrapper_hidden()        
+    h = wrapper_hidden()
+
+    h += sentinel
+    i = o
+    j = 0
+    while (j < len(h)):
+        for k in range(8):
+            w[i] &= 254
+            w[i] |= ((h[j] & 128) >> 7)
+            h[j] <<= 1 
+            i += I
+        j += 1
+
+    return(w)   
 
 def get_offset():
     offset = 0
