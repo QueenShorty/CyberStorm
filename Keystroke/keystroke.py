@@ -32,7 +32,7 @@ for char in password:
     sleep(uniform(keypress[i], keypress[i]))
     keyboard.release(char)
     sleep(uniform(keyinterval[j], keyinterval[j]))
-    i+=1
+    i++1
 
 tcflush(stdout, TCIFLUSH)
 print
