@@ -25,10 +25,14 @@ print "key press times = {}".format(keypress)
 print "key intevals = {}".format(keyinterval)
 
 i = 0
+j = -1
 for char in password:
+    j++1
     keyboard.press(char)
-    sleep(uniform(keypress[i], keyinterval[i]))
+    sleep(uniform(keypress[i], keypress[i]))
     keyboard.release(char)
+    sleep(uniform(keyinterval[j], keyinterval[j]))
+    i+=1
 
 tcflush(stdout, TCIFLUSH)
 print
