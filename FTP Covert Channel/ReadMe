@@ -1,4 +1,4 @@
-Execution: python 
+Execution: python bit7&10.py
 Program:BIT this sets the bit size to 7 or 10
         HOST this is the host ip in a string
         PORT is the port you are trying to connect to.
