@@ -1,0 +1,6 @@
+Execution: python 
+Program:BIT this sets the bit size to 7 or 10
+        HOST this is the host ip in a string
+        PORT is the port you are trying to connect to.
+     ftp.login("THIS IS THE USER", "PASSWORD")
+     the ftp.cwd helps the program navigate to the right directory.
