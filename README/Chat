@@ -1,0 +1,5 @@
+Execution: python chat.py
+Program: ZERO is the time in seconds for the delay length for zero
+         ONE is the time in seconds for the delay length for one
+         
+        s.connect(("HOST", PORT#))
