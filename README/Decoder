@@ -3,5 +3,5 @@ decoding one or the other or both simultaneously. This is achieved by checking t
 modulo operator. After determining the appropriate length of the string, the binary is then converted to its base 10 decimal equivalent.
 After they are converted into base 10, those numbers get converted to their corresponding ASCII character values in either the 7-bit or
 8-bit table. You will also need two files, the python code and a text file containing the binary string for input
-
+ IF THERE IS AN ISSUE WITH N being refrenced before assignment remove the -1 from the LEN() function
 How to Run: python decoder.py < filename.txt
