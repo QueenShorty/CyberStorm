@@ -11,7 +11,9 @@ import datetime
 import hashlib
 import sys
 
-#current = datetime.datetime.now() #Gets the current time
+######################################################################################################################
+#For hardcoded current time (comment all this out if using current computer time)
+
 current = "2019 01 07 14 20 04" #CHANGE THIS TO HARDCODE CURRENT TIME
 epoch = raw_input() #Gets the epoch time from stdin
 
@@ -24,6 +26,24 @@ date = datetime.datetime.strptime(epoch, '%Y %m %d %H %M %S') #Formats from stri
 temp = datetime.datetime.strptime(current, '%Y %m %d %H %M %S')
 start = UTC(date.timetuple()) #Converts to tuple, then will return as seconds in UTC form
 end = UTC(temp.timetuple()) #Converts to tuple, then will return as seconds in UTC form
+#######################################################################################################################
+
+
+#######################################################################################################################
+#For the current time (Uncomment this if trying to use computer current time)
+
+#current = datetime.datetime.now()
+#epoch = raw_input()
+
+#def UTC(s): #Converts time from DST to UTC
+    #secs = time.mktime(s)
+    #r = time.gmtime(secs)
+    #return time.mktime(r) #Returns UTC in seconds for easier math
+
+#date = datetime.datetime.strptime(epoch, '%Y %m %d %H %M %S') #Formats from string to date
+#start = UTC(date.timetuple()) #Converts to tuple, then will return as seconds in UTC form
+#end = UTC(current.timetuple()) #Converts to tuple, then will return as seconds in UTC form
+######################################################################################################################
 
 final = end - start #Subtracts both dates
 
