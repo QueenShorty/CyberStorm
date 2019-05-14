@@ -1,0 +1,5 @@
+Execution: python vigenere.py -e/d  <Key>
+
+Flags: -e for encrypting
+       -d for dycrypting
+Once execution begins you can now input the message you want to encrypt.
