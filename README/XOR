@@ -1,0 +1,11 @@
+PLEASE READ THIS PART FIRST:
+  TO READ FROM KEY FILE, MAKE SURE THAT IN THE LIME THAT SAYS:
+    with open("key", "r") as file:
+             hold = file.read()
+  MAKE SURE TO CHANGE "key" TO WHATEVER THE KEY FILE IS CALLED
+Reads from a file in current directory (this is the key), then takes the plaintext/ciphertext from stdin
+Sends ciphertext/plaintext (depending on if you are encoding or decoding) to stdout
+HOW TO RUN ON TERMINAL (for converting from plaintext to ciphertext): python XOR.py < plaintext > ciphertext
+  This takes the plaintext, converts to ciphertext, and then records the output into the file called ciphertext (can be called anything)
+HOW TO RUN ON TERMINAL (for going from ciphertext to plaintext): python XOR.py < ciphertext
+  Takes ciphertext and then sends the plaintext to stdout
