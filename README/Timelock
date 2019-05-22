@@ -1,0 +1,8 @@
+Reads EPOCH time from stdin in the format YYYY MM DD HH mm ss (Ex. 2019 05 14 03 14 42)
+Uses the computer's current time for current time
+Can also hardcode the current time to be whatever you want it to be
+Will print out a 4 character code as the answer
+HOW TO RUN IN TERMINAL: python timelock.py < epoch.txt 
+  epoch.txt is just a made up text file where the EPOCH time is in it.
+HOW TO RUN IN TERMINAL ANOTHER WAY: echo "2019 05 14 03 14 42" | python timelock.py 
+  where after echo you can put any time that you want to be as the EPOCH time as long as it fits the format
