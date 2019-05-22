@@ -1,9 +1,0 @@
-Execution: python Steg.py -(B/b) -(s/r) -i<val> -o<val> -w<file> -h<file> > outputfile
-
-Flags:   -b Bit method
-         -B Byte method
-         -r will retrive the plain text
-         -s will store the plain text
-         -o is the offset distance 
-         -i is the interval distance
-         
